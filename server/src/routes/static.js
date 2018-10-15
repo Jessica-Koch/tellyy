@@ -1,4 +1,5 @@
 const express = require('express');
+const fetch = require('node-fetch');
 const router = express.Router();
 const getPopularTVShows = require('./utils').getPopularTVShows;
 const tvShowSearch = require('./utils').tvShowSearch;
@@ -12,21 +13,10 @@ router.post('/search-shows', (req, res) => {
   title = req.body.title;
 
   if (!title) res.send('You need to enter a title');
-  res.send(req);
+  res.send(res);
   // res.redirect('/popular-tvshows');
 });
 
-router.get('/get-shows-popular', (req, res, next) => {
-  const apiUrl = requestUrl('tv/popular');
-
-  return fetch(apiUrl)
-    .then(res => res.json(apiUrl))
-    .then(data => {
-      res.send({data});
-    })
-    .catch(err => {
-      res.send(err);
-    });
-});
+router.get('/get-shows-popular', (req, res, next) => getPopularTVShows(res));
 
 module.exports = router;
