@@ -5,7 +5,7 @@ module.exports = {
   init(app) {
     const staticRoutes = require('../routes/static');
     const staticFiles = express.static(
-      path.join(__dirname, '../../../filmView/build')
+      path.join(__dirname, '../../../client/build')
     );
     app.use(
       logger(
