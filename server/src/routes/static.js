@@ -13,8 +13,8 @@ router.post('/search-shows', (req, res) => {
   title = req.body.title;
 
   if (!title) res.send('You need to enter a title');
-
-  res.redirect('/popular-tvshows');
+  res.send(req);
+  // res.redirect('/popular-tvshows');
 });
 
 router.get('/get-shows-popular', (req, res, next) => getPopularTVShows(res));

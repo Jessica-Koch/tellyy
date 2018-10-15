@@ -11,10 +11,9 @@
   },
   "scripts": {
     "install": "(cd client && yarn install) && (cd server && npm install)",
-    "clean": "concurrently \"rimraf node_modules\" \"cd client && rimraf node_modules build\" \"cd server && rimraf node_modules build\"",
-    "build": "concurrently \"cd client && yarn build\" \"cd server && npm build\"",
+    "build": "concurrently \"cd client && yarn build\"",
     "heroku-postbuild": "yarn build",
-    "start": "concurrently \"cd client && PORT=3000 yarn start\" \"cd server && PORT=5000 npm start\"",
-    "start:prod": "cd server && npm start:prod"
+    "dev": "concurrently \"cd server npm start\" \"cd client yarn start\"",
+    "start": "cd server && npm start"
   }
 }
