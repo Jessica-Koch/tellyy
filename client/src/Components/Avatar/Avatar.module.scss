@@ -1,0 +1,47 @@
+.Avatar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+}
+
+.Avatar .img,
+.Avatar .icon {
+  width: 50px;
+  margin-right: 20px;
+  height: 50px;
+}
+.Avatar .img {
+  overflow: hidden;
+  border: solid 3px rgba(0, 150, 136, 0.3);
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.Avatar .icon {
+  margin-right: 20px;
+  color: #fff;
+}
+
+.accountInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.accountInfo .link {
+  color: #8b92a7;
+  text-decoration: none;
+  line-height: 1;
+  font-size: 12px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.accountInfo .link:hover {
+  color: #fff;
+}
+
+.user {
+  font-size: 12px;
+  color: #fff;
+  font-weight: 900;
+}

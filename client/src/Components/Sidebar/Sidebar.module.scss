@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900");
+
+.sidebar {
+  color: #fff;
+  background: #121c26;
+  grid-area: sidebar;
+}
+
+.decorativeScript {
+  font-family: Oswald;
+  font-size: 45px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.sidebarContent {
+  margin: 75px 0;
+}
+
+.sidebarHeader {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  color: #8b92a7;
+  font-weight: 500;
+  margin-left: 50px;
+  font-size: 12px;
+  margin-bottom: 25px;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.sidebarListItem {
+  color: #fff;
+  line-height: 30px;
+  margin: 12.5px 0;
+  padding-left: 50px;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+  &:hover,
+  &.active {
+    border-left: 3px solid #00d9ff;
+    color: #00d9ff;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}

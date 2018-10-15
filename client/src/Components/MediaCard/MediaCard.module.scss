@@ -1,0 +1,25 @@
+.MediaCard {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 15%;
+  z-index: 50;
+  -webkit-box-shadow: 0 19px 38px 0 rgba(0, 0, 0, 0.3),
+    0 15px 12px 0 rgba(0, 0, 0, 0.22); /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 0 19px 38px 0 rgba(0, 0, 0, 0.3),
+    0 15px 12px 0 rgba(0, 0, 0, 0.22); /* Firefox 3.5 - 3.6 */
+  box-shadow: 0 19px 38px 0 rgba(0, 0, 0, 0.3),
+    0 15px 12px 0 rgba(0, 0, 0, 0.22); /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  .posterImage {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 5px;
+  }
+}
