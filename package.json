@@ -13,7 +13,7 @@
     "install": "(cd client && yarn install) && (cd server && npm install)",
     "build": "concurrently \"cd client && yarn build\"",
     "heroku-postbuild": "yarn build",
-    "start": "concurrently \"cd server npm start\" \"cd client yarn start\"",
-    "start:prpd": "cd server && npm start"
+    "dev": "concurrently \"cd server npm start\" \"cd client yarn start\"",
+    "start": "cd server && npm start"
   }
 }
