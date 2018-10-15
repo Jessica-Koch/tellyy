@@ -5,7 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "build": "babel ./ --ignore node_modules,build --out-dir build",
-    "start": "nodemon ./bin/www",
+    "start": "nodemon ./bin/www 5000",
     "start:prod": "node ./bin/www",
     "test": "export NODE_ENV=test && jasmine"
   },
