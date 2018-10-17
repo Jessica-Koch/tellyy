@@ -6,7 +6,7 @@ module.exports = {
   init(app) {
     const staticRoutes = require('../routes/static');
     const staticFiles = express.static(
-      path.join(__dirname, '../../../client/build')
+      path.join(__dirname, '../../../client/build/static')
     );
     app.use(
       logger(
