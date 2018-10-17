@@ -1,19 +1,20 @@
-import React, {Component} from "react";
-import Spinner from "../Spinner";
-import MediaCard from "../MediaCard";
-import styles from "./Home.module.scss";
+import React, {Component} from 'react';
+import Spinner from '../Spinner';
+import MediaCard from '../MediaCard';
+import ErrorMessage from '../ErrorMessage';
+import styles from './Home.module.scss';
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoading: true,
-      showsNotFound: "",
+      showsNotFound: '',
       shows: []
     };
   }
 
   componentDidMount() {
-    fetch("/get-shows-popular")
+    fetch('/get-shows-popular')
       .then(res => res.json())
       .then(data => {
         if (data.status_code === 404) {
@@ -34,6 +35,7 @@ class Home extends Component {
         key={`${show.name}-${i}`}
         imgExt={show.poster_path}
         name={show.name}
+        {...show}
       />
     );
   };
@@ -41,7 +43,7 @@ class Home extends Component {
   render() {
     const PopularShows =
       this.state.showsNotFound === 404 ? (
-        <div>Something went wrong</div>
+        <div> {ErrorMessage} </div>
       ) : (
         this.state.shows.map((s, i) => {
           return this.renderShow(s, i);

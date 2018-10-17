@@ -1,3 +1,4 @@
+//@ts-check
 const fetch = require('node-fetch');
 
 const apiKey = process.env.MOVIE_API_KEY;
@@ -7,6 +8,7 @@ const requestUrl = (urlParams, query = '') => {
 };
 
 module.exports = {
+  // route run on page load
   getPopularTVShows: function(res) {
     const apiUrl = requestUrl('tv/popular');
 
@@ -20,15 +22,15 @@ module.exports = {
       });
   },
 
-  tvShowSearch: function(res, queryParam) {
-    const apiUrl = requestUrl('search/tv', queryParam);
+  // route for searching tv shows
+  tvShowSearch: function(req, res) {
+    const apiUrl = requestUrl('search/tv', req.body.searchValue);
 
     return fetch(apiUrl)
-      .then(res => res.json(apiUrl))
+      .then(_res => _res.json())
       .then(data => res.send({data}))
       .catch((...err) => {
-        console.error(err);
-        res.send(err);
+        res.redirect('/error');
       });
   }
 };

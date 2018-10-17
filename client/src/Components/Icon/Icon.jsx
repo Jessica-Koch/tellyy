@@ -1,8 +1,8 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import { Icon as IconBase } from 'react-icons-kit'
 import {object, string} from 'prop-types';
 
-class Icon extends PureComponent {
+class Icon extends Component {
   static propTypes = {
     className: string,
     icon: object.isRequired

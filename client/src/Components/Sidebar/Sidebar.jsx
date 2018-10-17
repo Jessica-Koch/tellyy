@@ -1,12 +1,14 @@
-import React, {PureComponent} from "react";
-import styles from "./Sidebar.module.scss";
-import {NavLink} from "react-router-dom";
-import classNames from "classnames";
-class Sidebar extends PureComponent {
+import React, {Component} from 'react';
+import styles from './Sidebar.module.scss';
+import {NavLink, Link} from 'react-router-dom';
+import classNames from 'classnames';
+class Sidebar extends Component {
   render() {
     return (
       <div className={styles.sidebar}>
-        <h2 className={styles.decorativeScript}>Telly</h2>
+        <Link to="/">
+          <h2 className={styles.decorativeScript}>Telly</h2>
+        </Link>
         <div className={styles.sidebarContent}>
           <div className={styles.sidebarHeader}>Browse Telly</div>
           <div className={styles.linkList}>

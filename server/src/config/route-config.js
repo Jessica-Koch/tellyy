@@ -1,6 +1,7 @@
 const logger = require('morgan');
 const path = require('path');
 const express = require('express');
+
 module.exports = {
   init(app) {
     const staticRoutes = require('../routes/static');

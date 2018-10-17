@@ -60,9 +60,10 @@
     "lint": "eslint --ext .js --ext .jsx",
     "fixlint": "eslint --fix ./",
     "start": "node scripts/start.js",
+    "coverage": "open ./coverage/index.html",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "test:debug": "react-scripts --inspect-brk test --runInBand"
+    "test": "jest --coverage --colors",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand --debug"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -5,5 +5,5 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({adapter: new Adapter()});
 
 describe('MediaCard', () => {
-  renderTest(MediaCard, {name: 'imma name'});
+  renderTest(MediaCard, {name: 'imma name', imgExt: 'immanext'});
 });

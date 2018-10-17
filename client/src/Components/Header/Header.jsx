@@ -13,18 +13,17 @@ class Header extends Component {
   }
 
   onSubmit = e => {
-    e.preventDefault();
-
     const {searchValue} = this.state;
+    e.preventDefault();
     fetch('/search-shows', {
-      method: 'POST',
-      body: JSON.stringify(searchValue),
       headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-        // "Content-Type": "application/x-www-form-urlencoded",
-      }
+        'Content-type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify({searchValue})
     })
-      .then(res => res.json())
+      .then(response => response.json())
+
       .catch(err => {
         console.error(err);
       });
@@ -36,7 +35,6 @@ class Header extends Component {
 
   render() {
     const {searchValue} = this.state;
-    console.log('this state', this.state);
     return (
       <div className={styles.header}>
         <SearchBar

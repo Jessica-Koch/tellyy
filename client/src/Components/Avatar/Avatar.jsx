@@ -1,10 +1,10 @@
-import React, {PureComponent} from "react";
+import React, {Component} from "react";
 import styles from "./Avatar.module.scss";
 import {string} from "prop-types";
 import {user} from "react-icons-kit/metrize/user";
 import Icon from "../Icon";
 
-class Avatar extends PureComponent {
+class Avatar extends Component {
   static propTypes = {
     imgUrl: string.isRequired,
     userName: string.isRequired

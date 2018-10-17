@@ -5,16 +5,10 @@ const getPopularTVShows = require('./utils').getPopularTVShows;
 const tvShowSearch = require('./utils').tvShowSearch;
 
 let title;
-router.get('/search-shows', (req, res, next) => tvShowSearch(res, title));
 
 router.post('/search-shows', (req, res) => {
-  console.log('req', req.body);
-  // console.log('res', res);
-  title = req.body.title;
-
-  if (!title) res.send('You need to enter a title');
-  res.send(res);
-  // res.redirect('/popular-tvshows');
+  console.log(req.body);
+  tvShowSearch(req, res);
 });
 
 router.get('/get-shows-popular', (req, res, next) => getPopularTVShows(res));

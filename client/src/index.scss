@@ -1,38 +1,39 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:300,500,800|Oswald:700");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,500,800|Oswald:700');
 @font-face {
-  font-family: "Copper Hewit";
+  font-family: 'Copper Hewit';
   font-style: normal;
   font-weight: 400;
-  src: local("Copper Hewitt"), local("CopperHewitt"),
-    url("./fonts/CooperHewitt-Book.otf");
+  src: local('Copper Hewitt'), local('CopperHewitt'),
+    url('./fonts/CooperHewitt-Book.otf');
 }
 @font-face {
-  font-family: "Copper Hewit";
+  font-family: 'Copper Hewit';
   font-style: normal;
   font-weight: 500;
-  src: local("Copper Hewitt"), local("CopperHewitt"),
-    url("./fonts/CooperHewitt-Bold.otf");
+  src: local('Copper Hewitt'), local('CopperHewitt'),
+    url('./fonts/CooperHewitt-Bold.otf');
 }
 @font-face {
-  font-family: "Copper Hewit";
+  font-family: 'Copper Hewit';
   font-style: normal;
   font-weight: 600;
-  src: local("Copper Hewitt"), local("CopperHewitt"),
-    url("./fonts/CooperHewitt-Medium.otf");
+  src: local('Copper Hewitt'), local('CopperHewitt'),
+    url('./fonts/CooperHewitt-Medium.otf');
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
 }
-html {
+html,
+body {
   height: 100%;
   background: #0e1419;
 }
@@ -45,6 +46,6 @@ html {
   background: #0e1419;
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
