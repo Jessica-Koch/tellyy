@@ -29,7 +29,7 @@ class MediaCard extends Component {
       }}
     />
   ) : (
-    <Icon className={styles.mediaIcon} icon={image} />
+    <Icon className={styles.mediaIcon} size={75} icon={image} />
   );
 
   render() {
@@ -40,9 +40,8 @@ class MediaCard extends Component {
         <Link to={`/shows/${urlExt}`}>
           <div className={styles.MediaCard}>
             {this.imageOrIcon}
-            <div className={styles.showInfo}>
-              <div className={styles.title}>{name}</div>
-            </div>
+
+            <div className={styles.title}>{name}</div>
           </div>
         </Link>
         <Route path="/:id" render={props => <Show show={this.props} />} />

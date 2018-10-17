@@ -6,6 +6,4 @@ require('dotenv').config();
 
 routeConfig.init(app);
 
-console.log('app.js ');
-
 module.exports = app;

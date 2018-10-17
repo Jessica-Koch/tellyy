@@ -2,13 +2,19 @@ import React, {Component} from 'react';
 import styles from './Header.module.scss';
 import SearchBar from '../SearchBar';
 import Avatar from '../Avatar';
-
+import Drawer from '../Drawer';
+import Spinner from '../Spinner';
+import MediaCard from '../MediaCard';
 class Header extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      searchValue: ''
+      isLoading: true,
+      searchResults: [],
+      isOpen: false,
+      searchValue: '',
+      showsNotFound: ''
     };
   }
 
@@ -23,7 +29,17 @@ class Header extends Component {
       body: JSON.stringify({searchValue})
     })
       .then(response => response.json())
-
+      .then(data => {
+        if (data.status_code === 34) {
+          this.setState({isLoading: false, showsNotFound: 404});
+        } else {
+          this.setState({
+            isLoading: false,
+            searchResults: data.data.results,
+            isOpen: true
+          });
+        }
+      })
       .catch(err => {
         console.error(err);
       });
@@ -33,19 +49,47 @@ class Header extends Component {
     this.setState({searchValue});
   };
 
+  renderResult = (result, i) => {
+    return (
+      <MediaCard
+        className={styles.show}
+        key={`${result.name}-${i}`}
+        imgExt={result.poster_path}
+        name={result.name}
+        {...result}
+      />
+    );
+  };
+
+  renderSearchResults = () =>
+    this.state.searchResults.map((s, i) => {
+      console.log('s', s);
+      return this.renderResult(s, i);
+    });
+
+  renderNotFound = <div>We couldn't find what you were looking for.</div>;
+
   render() {
-    const {searchValue} = this.state;
+    const {isOpen, isLoading, searchValue} = this.state;
+    const currentView = isLoading ? <Spinner /> : 'PopularShows';
+
     return (
       <div className={styles.header}>
-        <SearchBar
-          value={searchValue}
-          onChange={this.onChange}
-          onSubmit={this.onSubmit}
-        />
-        <Avatar
-          userName="Lucinda McCarthy"
-          imgUrl="https://source.unsplash.com/pAs4IM6OGWI"
-        />
+        <div className={styles.wrapper}>
+          <SearchBar
+            className={styles.headerSearch}
+            value={searchValue}
+            onChange={this.onChange}
+            onSubmit={this.onSubmit}
+          />
+          <Avatar
+            userName="Lucinda McCarthy"
+            imgUrl="https://source.unsplash.com/pAs4IM6OGWI"
+          />
+        </div>
+        <Drawer className={styles.drawer} isExpanded={true}>
+          {this.renderSearchResults()}
+        </Drawer>
       </div>
     );
   }

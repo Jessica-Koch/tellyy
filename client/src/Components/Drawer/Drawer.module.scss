@@ -1,0 +1,19 @@
+.Drawer {
+  z-index: 1;
+  left: 0;
+  transition: all 0.5s ease;
+  background: #121c26;
+  width: calc(100% - 310px);
+  position: absolute;
+  right: 0;
+  height: auto;
+}
+
+.expanded {
+  padding: 30px;
+  -webkit-box-shadow: 28px 18px 56px 9px rgba(0, 0, 0, 0.42);
+  -moz-box-shadow: 28px 18px 56px 9px rgba(0, 0, 0, 0.42);
+  box-shadow: 28px 18px 56px 9px rgba(0, 0, 0, 0.42);
+  top: 145px;
+  left: 250px;
+}

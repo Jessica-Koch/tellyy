@@ -1,7 +1,27 @@
 .header {
   grid-area: header;
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  padding: 0 25px;
+}
+.wrapper {
+  display: flex;
+  width: inherit;
+  height: 145px;
+  align-items: center;
+  background: #0e1419;
+  justify-content: flex-end;
+  padding: 0 25px 0 0;
+  z-index: 5;
+}
+
+.drawer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 35px;
+  z-index: 1;
+  grid-auto-rows: minmax(375px, auto);
+}
+.headerSearch {
+  margin: 0 50px;
 }

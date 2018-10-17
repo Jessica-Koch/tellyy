@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import Spinner from '../Spinner';
-import MediaCard from '../MediaCard';
-import ErrorMessage from '../ErrorMessage';
+import Spinner from '../../Components/Spinner';
+import MediaCard from '../../Components/MediaCard';
+import ErrorMessage from '../../Components/ErrorMessage';
 import styles from './Home.module.scss';
+
 class Home extends Component {
   constructor(props) {
     super(props);
