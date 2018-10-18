@@ -22,6 +22,10 @@ class Content extends Component {
           <Route exact={true} path="/movies" component={Movies} />
           <Route path="/error" component={ErrorMessage} />
           <Route
+            path="/movies/:id"
+            render={props => <Show {...this.state} {...props} />}
+          />
+          <Route
             path="/shows/:id"
             render={props => <Show {...this.state} {...props} />}
           />

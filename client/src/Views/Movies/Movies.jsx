@@ -58,7 +58,7 @@ class Movies extends Component {
       <div className={styles.Movies}>
         {currentView}
         <Route
-          path="/shows/:id"
+          path="/movies/:id"
           render={props => <Show {...this.state} {...props} />}
         />
       </div>
