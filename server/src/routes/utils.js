@@ -28,6 +28,7 @@ module.exports = {
 
     return fetch(apiUrl)
       .then(_res => _res.json())
+
       .then(data => res.send({data}))
       .catch((...err) => {
         res.redirect('/error');

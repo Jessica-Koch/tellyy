@@ -54,12 +54,7 @@ class Home extends Component {
       );
 
     const currentView = this.state.isLoading ? <Spinner /> : PopularShows;
-    return (
-      <div className={styles.Home}>
-        {currentView}
-        <Route path="/shows/:id" render={props => <Show {...props} />} />
-      </div>
-    );
+    return <div className={styles.Home}>{currentView}</div>;
   }
 }
 

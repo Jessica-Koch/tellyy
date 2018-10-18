@@ -1,23 +1,21 @@
 import React, {Component} from 'react';
-import { Icon as IconBase } from 'react-icons-kit'
+import {Icon as IconBase} from 'react-icons-kit';
 import {object, string} from 'prop-types';
 
 class Icon extends Component {
   static propTypes = {
     className: string,
     icon: object.isRequired
-  }
+  };
 
   static defaultProps = {
-    className: '',
-  }
+    className: ''
+  };
 
-  render(){
-    const {className, icon, size} = this.props;
+  render() {
+    const {className, icon, size, rest} = this.props;
 
-    return (
-      <IconBase size ={size} className={className} icon={icon} />
-    )
+    return <IconBase size={size} {...rest} className={className} icon={icon} />;
   }
 }
 

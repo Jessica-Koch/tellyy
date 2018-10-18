@@ -4,14 +4,12 @@ import SearchBar from '../SearchBar';
 import Avatar from '../Avatar';
 import Drawer from '../Drawer';
 import Spinner from '../Spinner';
-import MediaCard from '../MediaCard';
 import Show from '../Show';
-import {Route} from 'react-router-dom';
+import Icon from '../Icon';
+import {chevronsUp} from 'react-icons-kit/feather/chevronsUp';
+import MediaCard from '../MediaCard';
+import {Switch, Route} from 'react-router-dom';
 
-const getType = {
-  tv: 'shows',
-  movie: 'movies'
-};
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -73,7 +71,6 @@ class Header extends Component {
 
   renderSearchResults = () =>
     this.state.searchResults.map((s, i) => {
-      console.log('s', s);
       return this.renderResult(s, i);
     });
 
@@ -100,6 +97,9 @@ class Header extends Component {
           />
         </div>
         <Drawer className={styles.drawer} isExpanded={isOpen}>
+          <div className={styles.centered}>
+            <Icon onClick={!this.state.isOpen} icon={chevronsUp} />
+          </div>
           <div className={styles.resultsHeader}>
             {searchResults.length > 0
               ? `${searchResults.length} shows matched your search`

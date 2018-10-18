@@ -8,10 +8,6 @@ import Show from '../Show';
 import {formatStr} from '../../utils/str';
 
 class MediaCard extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-  }
   static propTypes = {
     imgExt: string,
     name: string.isRequired,
@@ -41,17 +37,17 @@ class MediaCard extends Component {
     const urlExt = formatStr(name || title);
     return (
       <div>
-        <Link to={`/shows/${urlExt}`}>
+        <Link to={{pathname: `/shows/${urlExt}`, state: {item: this.props}}}>
           <div className={styles.MediaCard}>
             {this.imageOrIcon}
 
             <div className={styles.title}>{title || name}</div>
           </div>
         </Link>
-        <Route
+        {/* <Route
           path="/shows/:id"
-          render={props => <Show show={this.props} {...props} />}
-        />
+          render={(name, props) => <Show {...props} name={name} />}
+        /> */}
       </div>
     );
   }
