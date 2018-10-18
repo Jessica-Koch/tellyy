@@ -113,17 +113,16 @@ class Header extends Component {
         </div>
         <PoseGroup>
           {isVisible && [
-            // If animating more than one child, each needs a `key`
-            <Shade key="shade" className={styles.shade} />,
-            <Modal key="modal" className={styles.modal}>
-              <div>hi</div>
-              {/* <div className={styles.resultsHeader}>
-                {searchResults.length > 0
-                  ? `${searchResults.length} shows matched your search`
-                  : this.renderNotFound}
-              </div> */}
-              {/* {this.renderSearchResults()} */}
-            </Modal>
+            <Shade key="shade" className={styles.shade}>
+              <Modal key="modal" className={styles.modal}>
+                <div className={styles.centered}>
+                  {searchResults.length > 0
+                    ? `${searchResults.length} shows matched your search`
+                    : this.renderNotFound}
+                </div>
+                {this.renderSearchResults()}
+              </Modal>
+            </Shade>
           ]}
         </PoseGroup>
       </div>

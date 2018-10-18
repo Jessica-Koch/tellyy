@@ -3,9 +3,9 @@ import styles from './MediaCard.module.scss';
 import {string} from 'prop-types';
 import {image} from 'react-icons-kit/feather/image';
 import Icon from '../Icon';
-import {Route, Link} from 'react-router-dom';
-import Show from '../Show';
+import {Link} from 'react-router-dom';
 import {formatStr} from '../../utils/str';
+import classNames from 'classnames';
 
 class MediaCard extends Component {
   static propTypes = {
@@ -33,12 +33,12 @@ class MediaCard extends Component {
   );
 
   render() {
-    const {name, title} = this.props;
+    const {className, name, title} = this.props;
     const urlExt = formatStr(name || title);
     return (
       <div>
         <Link to={{pathname: `/shows/${urlExt}`, state: {item: this.props}}}>
-          <div className={styles.MediaCard}>
+          <div className={classNames(className, styles.MediaCard)}>
             {this.imageOrIcon}
 
             <div className={styles.title}>{title || name}</div>
