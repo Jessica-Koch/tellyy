@@ -1,0 +1,27 @@
+#root {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 200;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.shade {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal {
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  background: white;
+  border-radius: 10px;
+}

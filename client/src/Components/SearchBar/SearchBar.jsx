@@ -1,26 +1,10 @@
 import React, {Component} from 'react';
-import {bool, func, string} from 'prop-types';
+import {func, string} from 'prop-types';
 import {search} from 'react-icons-kit/feather/search';
 import Icon from '../Icon';
-import posed, {PoseGroup} from 'react-pose';
-
 import styles from './SearchBar.module.scss';
 import classNames from 'classnames';
-const configBox = {
-  off: {
-    width: 150,
-    height: 150,
-    flip: true,
-    background: '#69a7c2'
-  },
-  on: {
-    width: '90vw',
-    height: '90vh',
-    flip: true,
-    background: '#035D75'
-  }
-};
-const Box = posed.form(configBox);
+
 class SearchBar extends Component {
   static propTypes = {
     onSubmit: func.isRequired,
@@ -36,7 +20,7 @@ class SearchBar extends Component {
   render() {
     const {className, onSubmit, onChange, placeholder, value} = this.props;
     return (
-      <Box
+      <form
         {...this.props}
         onSubmit={onSubmit}
         className={classNames(className, styles.SearchBar)}
@@ -52,7 +36,7 @@ class SearchBar extends Component {
             value={value}
           />
         </label>
-      </Box>
+      </form>
     );
   }
 }

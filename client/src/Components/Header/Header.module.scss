@@ -31,3 +31,20 @@
   margin: 15px 0;
   justify-content: center;
 }
+
+.shade {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal {
+  position: absolute;
+  width: 800px;
+  height: auto;
+  background: white;
+  border-radius: 10px;
+}

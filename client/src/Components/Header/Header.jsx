@@ -2,15 +2,12 @@ import React, {Component} from 'react';
 import styles from './Header.module.scss';
 import SearchBar from '../SearchBar';
 import Avatar from '../Avatar';
-import Drawer from '../Drawer';
 import Spinner from '../Spinner';
-import Show from '../Show';
+import {PoseGroup} from 'react-pose';
 import Icon from '../Icon';
 import {iosArrowUp} from 'react-icons-kit/ionicons/iosArrowUp';
 import MediaCard from '../MediaCard';
-import Box from '../Box';
-
-import {Switch, Route} from 'react-router-dom';
+import Modal, {Shade} from '../Modal';
 
 class Header extends Component {
   constructor(props) {
@@ -19,7 +16,7 @@ class Header extends Component {
     this.state = {
       isLoading: false,
       searchResults: [],
-      open: false,
+      isVisible: false,
       searchValue: '',
       errorCode: ''
     };
@@ -28,7 +25,7 @@ class Header extends Component {
   onSubmit = e => {
     e.preventDefault();
     console.log('onsubmit');
-    this.handleOpen(e);
+    this.handleisVisible(e);
     const {searchValue} = this.state;
 
     this.setState({isLoading: true});
@@ -48,7 +45,7 @@ class Header extends Component {
           this.setState({
             isLoading: false,
             searchResults: data.data.results,
-            open: true
+            isVisible: true
           });
         }
       })
@@ -80,21 +77,21 @@ class Header extends Component {
 
   renderNotFound = <div>We couldn't find what you were looking for.</div>;
 
-  handleOpen = e => {
+  handleisVisible = e => {
     e.stopPropagation();
     this.setState({
-      open: true
+      isVisible: true
     });
   };
 
   handleClose = e => {
     this.setState({
-      open: false
+      isVisible: false
     });
   };
 
   render() {
-    const {open, isLoading, searchValue, searchResults} = this.state;
+    const {isVisible, isLoading, searchValue, searchResults} = this.state;
 
     return isLoading ? (
       <Spinner />
@@ -106,7 +103,7 @@ class Header extends Component {
             value={searchValue}
             onChange={this.onChange}
             onSubmit={this.onSubmit}
-            pose={open ? 'on' : 'off'}
+            pose={isVisible ? 'on' : 'off'}
             placeholder="Search media"
           />
           <Avatar
@@ -114,18 +111,20 @@ class Header extends Component {
             imgUrl="https://source.unsplash.com/pAs4IM6OGWI"
           />
         </div>
-
-        <Drawer className={styles.drawer} isExpanded={open}>
-          <div className={styles.centered}>
-            <Icon onClick={!this.state.open} size={20} icon={iosArrowUp} />
-          </div>
-          <div className={styles.resultsHeader}>
-            {searchResults.length > 0
-              ? `${searchResults.length} shows matched your search`
-              : this.renderNotFound}
-          </div>
-          {this.renderSearchResults()}
-        </Drawer>
+        <PoseGroup>
+          {isVisible && [
+            // If animating more than one child, each needs a `key`
+            <Shade key="shade" className={styles.shade} />,
+            <Modal key="modal" className={styles.modal}>
+              <div className={styles.resultsHeader}>
+                {searchResults.length > 0
+                  ? `${searchResults.length} shows matched your search`
+                  : this.renderNotFound}
+              </div>
+              {this.renderSearchResults()}
+            </Modal>
+          ]}
+        </PoseGroup>
       </div>
     );
   }
