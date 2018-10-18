@@ -4,8 +4,6 @@ import SearchBar from '../SearchBar';
 import Avatar from '../Avatar';
 import Spinner from '../Spinner';
 import {PoseGroup} from 'react-pose';
-import Icon from '../Icon';
-import {iosArrowUp} from 'react-icons-kit/ionicons/iosArrowUp';
 import MediaCard from '../MediaCard';
 import Modal, {Shade} from '../Modal';
 

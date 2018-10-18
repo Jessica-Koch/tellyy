@@ -33,6 +33,9 @@
   position: absolute;
   background: rgba(0, 0, 0, 0.8);
   margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   top: 0;
   left: 0;
   right: 0;
@@ -41,13 +44,15 @@
 
 .modal {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   grid-gap: 30px;
-  z-index: 1;
-  grid-auto-rows: minmax(305px, auto);
+  z-index: 5;
+  color: #0e1419;
+  grid-auto-rows: minmax(245px, auto);
   position: absolute;
-  width: 800px;
-  height: 500px;
+  width: 80%;
+  height: auto;
+  padding: 25px;
   background: white;
   border-radius: 10px;
 }
