@@ -23,15 +23,16 @@ module.exports = {
   },
 
   // route for searching tv shows
-  tvShowSearch: function(req, res) {
-    const apiUrl = requestUrl('search/tv', req.body.searchValue);
+  getPopularMovies: function(res) {
+    const apiUrl = requestUrl('movie/popular');
 
     return fetch(apiUrl)
-      .then(_res => _res.json())
-
-      .then(data => res.send({data}))
-      .catch((...err) => {
-        res.redirect('/error');
+      .then(res => res.json(apiUrl))
+      .then(data => {
+        res.send({data});
+      })
+      .catch(err => {
+        res.send(err);
       });
   },
 
