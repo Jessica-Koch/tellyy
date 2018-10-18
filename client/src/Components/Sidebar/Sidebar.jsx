@@ -20,7 +20,7 @@ class Sidebar extends Component {
               Popular Shows
             </NavLink>
             <NavLink
-              to="/puppy"
+              to="/movies"
               activeClassName={styles.active}
               className={classNames(styles.activeClass, styles.sidebarListItem)}
             >

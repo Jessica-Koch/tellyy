@@ -10,7 +10,7 @@ class Header extends Component {
     super(props);
 
     this.state = {
-      isLoading: true,
+      isLoading: false,
       searchResults: [],
       isOpen: false,
       searchValue: '',
@@ -70,10 +70,11 @@ class Header extends Component {
   renderNotFound = <div>We couldn't find what you were looking for.</div>;
 
   render() {
-    const {isOpen, isLoading, searchValue} = this.state;
-    const currentView = isLoading ? <Spinner /> : 'PopularShows';
-
-    return (
+    const {isOpen, isLoading, searchValue, searchResults} = this.state;
+    console.log(searchResults.length);
+    return isLoading ? (
+      <Spinner />
+    ) : (
       <div className={styles.header}>
         <div className={styles.wrapper}>
           <SearchBar
@@ -87,7 +88,12 @@ class Header extends Component {
             imgUrl="https://source.unsplash.com/pAs4IM6OGWI"
           />
         </div>
-        <Drawer className={styles.drawer} isExpanded={true}>
+        <Drawer className={styles.drawer} isExpanded={isOpen}>
+          <div className={styles.resultsHeader}>
+            {searchResults.length > 0
+              ? `${searchResults.length} shows matched your search`
+              : this.renderNotFound}
+          </div>
           {this.renderSearchResults()}
         </Drawer>
       </div>
