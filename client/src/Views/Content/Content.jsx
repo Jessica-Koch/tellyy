@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Home from '../Home';
+import Movies from '../Movies';
 import ErrorMessage from '../../Components/ErrorMessage';
 import styles from './Content.module.scss';
 import {Switch, Route} from 'react-router-dom';
@@ -18,6 +19,7 @@ class Content extends Component {
       <div className={styles.content}>
         <Switch>
           <Route exact={true} path="/" component={Home} />
+          <Route exact={true} path="/movies" component={Movies} />
           <Route path="/error" component={ErrorMessage} />
           <Route
             path="/shows/:id"

@@ -17,7 +17,7 @@ class Movies extends Component {
   }
 
   componentDidMount() {
-    fetch('/get-shows-popular')
+    fetch('/get-movies-popular')
       .then(res => res.json())
       .then(data => {
         if (data.status_code === 404) {

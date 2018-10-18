@@ -14,7 +14,6 @@ const RatingItem = ({checked, colored, icon, value}) => (
   </label>
 );
 const Rating = ({className, min, max, value, icon}) => {
-  console.log(value);
   return (
     <div className={className}>
       {range(min, max).map(item => {
