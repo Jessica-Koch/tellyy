@@ -1,8 +1,21 @@
 import React, {Component} from 'react';
+import posed from 'react-pose';
+import Item from '../Box/Item';
 import styles from './Drawer.module.scss';
 import {arrayOf, bool, node, oneOfType, string} from 'prop-types';
 import classNames from 'classnames';
 
+const configContent = {
+  off: {
+    opacity: 0
+  },
+  on: {
+    opacity: 1,
+    delayChildren: 250,
+    staggerChildren: 100
+  }
+};
+const DrawerContent = posed.div(configContent);
 class Drawer extends Component {
   static propTypes = {
     className: string,
@@ -16,7 +29,7 @@ class Drawer extends Component {
 
     return (
       <div className={classNames(styles.Drawer, expanded, className)}>
-        {children}
+        <DrawerContent className={styles.content}>{children}</DrawerContent>
       </div>
     );
   }

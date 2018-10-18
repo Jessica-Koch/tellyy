@@ -1,11 +1,31 @@
 import React, {Component} from 'react';
 import {shape, string, array, number} from 'prop-types';
+import styled from 'react-emotion';
 import {iosSearchStrong} from 'react-icons-kit/ionicons/iosSearchStrong';
 import Icon from '../Icon';
 import {androidStar} from 'react-icons-kit/ionicons/androidStar';
 import styles from './Show.module.scss';
 import Rating from '../Rating';
 
+const ImageDiv = styled('div')`
+  position: relative;
+  color: white;
+  height: 100%;
+  width: 100%;
+  &:before {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('${props => props.src}');
+    filter: grayscale(100%);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+`;
 class Show extends Component {
   constructor(props) {
     super(props);
@@ -30,12 +50,7 @@ class Show extends Component {
     const {state} = location;
     const {item} = state;
     return (
-      <div
-        className={styles.Show}
-        style={{
-          backgroundImage: `url(${this.imageUrl})`
-        }}
-      >
+      <ImageDiv className={styles.Show} src={this.imageUrl}>
         <div className={styles.overlay} />
         <div className={styles.wrapper}>
           <div className={styles.info}>
@@ -56,7 +71,7 @@ class Show extends Component {
             <div className={styles.description}>{item.overview}</div>
           </div>
         </div>
-      </div>
+      </ImageDiv>
     );
   }
 }

@@ -8,6 +8,8 @@ import Show from '../Show';
 import Icon from '../Icon';
 import {iosArrowUp} from 'react-icons-kit/ionicons/iosArrowUp';
 import MediaCard from '../MediaCard';
+import Box from '../Box';
+
 import {Switch, Route} from 'react-router-dom';
 
 class Header extends Component {
@@ -17,7 +19,7 @@ class Header extends Component {
     this.state = {
       isLoading: false,
       searchResults: [],
-      isOpen: false,
+      open: false,
       searchValue: '',
       errorCode: ''
     };
@@ -25,6 +27,8 @@ class Header extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+    console.log('onsubmit');
+    this.handleOpen(e);
     const {searchValue} = this.state;
 
     this.setState({isLoading: true});
@@ -44,7 +48,7 @@ class Header extends Component {
           this.setState({
             isLoading: false,
             searchResults: data.data.results,
-            isOpen: true
+            open: true
           });
         }
       })
@@ -76,19 +80,33 @@ class Header extends Component {
 
   renderNotFound = <div>We couldn't find what you were looking for.</div>;
 
+  handleOpen = e => {
+    e.stopPropagation();
+    this.setState({
+      open: true
+    });
+  };
+
+  handleClose = e => {
+    this.setState({
+      open: false
+    });
+  };
+
   render() {
-    const {isOpen, isLoading, searchValue, searchResults} = this.state;
+    const {open, isLoading, searchValue, searchResults} = this.state;
 
     return isLoading ? (
       <Spinner />
     ) : (
-      <div className={styles.header}>
+      <div className={styles.header} onClick={this.handleClose}>
         <div className={styles.wrapper}>
           <SearchBar
             className={styles.headerSearch}
             value={searchValue}
             onChange={this.onChange}
             onSubmit={this.onSubmit}
+            pose={open ? 'on' : 'off'}
             placeholder="Search media"
           />
           <Avatar
@@ -96,9 +114,10 @@ class Header extends Component {
             imgUrl="https://source.unsplash.com/pAs4IM6OGWI"
           />
         </div>
-        <Drawer className={styles.drawer} isExpanded={isOpen}>
+
+        <Drawer className={styles.drawer} isExpanded={open}>
           <div className={styles.centered}>
-            <Icon onClick={!this.state.isOpen} size={20} icon={iosArrowUp} />
+            <Icon onClick={!this.state.open} size={20} icon={iosArrowUp} />
           </div>
           <div className={styles.resultsHeader}>
             {searchResults.length > 0
@@ -106,10 +125,6 @@ class Header extends Component {
               : this.renderNotFound}
           </div>
           {this.renderSearchResults()}
-          {/* <Route
-            path="/shows/:id"
-            render={props => <Show {...this.state} {...props} />}
-          /> */}
         </Drawer>
       </div>
     );
