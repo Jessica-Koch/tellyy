@@ -32,5 +32,17 @@ module.exports = {
       .catch((...err) => {
         res.redirect('/error');
       });
+  },
+
+  // route for searching tv shows
+  mixedMediaSearch: function(req, res) {
+    const apiUrl = requestUrl('search/multi', req.body.searchValue);
+
+    return fetch(apiUrl)
+      .then(_res => _res.json())
+      .then(data => res.send({data}))
+      .catch((...err) => {
+        res.redirect('/error');
+      });
   }
 };
