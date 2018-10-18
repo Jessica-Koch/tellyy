@@ -5,6 +5,13 @@ import Avatar from '../Avatar';
 import Drawer from '../Drawer';
 import Spinner from '../Spinner';
 import MediaCard from '../MediaCard';
+import Show from '../Show';
+import {Route} from 'react-router-dom';
+
+const getType = {
+  tv: 'shows',
+  movie: 'movies'
+};
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -14,14 +21,17 @@ class Header extends Component {
       searchResults: [],
       isOpen: false,
       searchValue: '',
-      showsNotFound: ''
+      errorCode: ''
     };
   }
 
   onSubmit = e => {
-    const {searchValue} = this.state;
     e.preventDefault();
-    fetch('/search-shows', {
+    const {searchValue} = this.state;
+
+    this.setState({isLoading: true});
+
+    fetch('/search-media', {
       headers: {
         'Content-type': 'application/json'
       },
@@ -31,7 +41,7 @@ class Header extends Component {
       .then(response => response.json())
       .then(data => {
         if (data.status_code === 34) {
-          this.setState({isLoading: false, showsNotFound: 404});
+          this.setState({isLoading: false, errorCode: 404});
         } else {
           this.setState({
             isLoading: false,
@@ -82,6 +92,7 @@ class Header extends Component {
             value={searchValue}
             onChange={this.onChange}
             onSubmit={this.onSubmit}
+            placeholder="Search media"
           />
           <Avatar
             userName="Lucinda McCarthy"
@@ -95,6 +106,10 @@ class Header extends Component {
               : this.renderNotFound}
           </div>
           {this.renderSearchResults()}
+          <Route
+            path="/shows/:id"
+            render={props => <Show {...this.state} {...props} />}
+          />
         </Drawer>
       </div>
     );

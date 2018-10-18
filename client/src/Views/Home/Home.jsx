@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import {Route} from 'react-router-dom';
 import Spinner from '../../Components/Spinner';
 import MediaCard from '../../Components/MediaCard';
 import ErrorMessage from '../../Components/ErrorMessage';
+import Show from '../../Components/Show';
 import styles from './Home.module.scss';
 
 class Home extends Component {
@@ -52,7 +54,12 @@ class Home extends Component {
       );
 
     const currentView = this.state.isLoading ? <Spinner /> : PopularShows;
-    return <div className={styles.Home}>{currentView}</div>;
+    return (
+      <div className={styles.Home}>
+        {currentView}
+        <Route path="/shows/:id" render={props => <Show {...props} />} />
+      </div>
+    );
   }
 }
 

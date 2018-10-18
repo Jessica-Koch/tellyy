@@ -8,7 +8,6 @@ import Show from '../../Components/Show';
 class Content extends Component {
   constructor(props) {
     super(props);
-    console.log('props', props.data);
     this.state = {
       isLoading: false
     };
@@ -20,10 +19,6 @@ class Content extends Component {
         <Switch>
           <Route exact={true} path="/" component={Home} />
           <Route path="/error" component={ErrorMessage} />
-          <Route
-            path="/shows/:id"
-            render={props => <Show {...routeProps} {...props} />}
-          />
         </Switch>
       </div>
     );
