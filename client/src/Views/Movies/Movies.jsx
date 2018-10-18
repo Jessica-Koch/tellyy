@@ -11,8 +11,8 @@ class Movies extends Component {
     super(props);
     this.state = {
       isLoading: true,
-      showsNotFound: '',
-      shows: []
+      moviesNotFound: '',
+      movies: []
     };
   }
 
@@ -21,9 +21,9 @@ class Movies extends Component {
       .then(res => res.json())
       .then(data => {
         if (data.status_code === 404) {
-          this.setState({isLoading: false, showsNotFound: 404});
+          this.setState({isLoading: false, moviesNotFound: 404});
         } else {
-          this.setState({isLoading: false, shows: data.data.results});
+          this.setState({isLoading: false, movies: data.data.results});
         }
       })
       .catch(err => {
@@ -44,16 +44,16 @@ class Movies extends Component {
   };
 
   render() {
-    const PopularShows =
-      this.state.showsNotFound === 404 ? (
-        <div> {ErrorMessage} </div>
+    const PopularMovies =
+      this.state.movies === undefined ? (
+        <Spinner />
       ) : (
-        this.state.shows.map((s, i) => {
+        this.state.movies.map((s, i) => {
           return this.renderShow(s, i);
         })
       );
 
-    const currentView = this.state.isLoading ? <Spinner /> : PopularShows;
+    const currentView = this.state.isLoading ? <Spinner /> : PopularMovies;
     return (
       <div className={styles.Movies}>
         {currentView}

@@ -44,10 +44,10 @@ class Home extends Component {
   };
 
   render() {
-    const shows = this.state.shows || [];
+    const shows = this.state.shows;
     const PopularShows =
-      this.state.showsNotFound === 404 ? (
-        <div> {ErrorMessage} </div>
+      this.state.shows === undefined ? (
+        <div> {Spinner} </div>
       ) : (
         shows.map((s, i) => {
           return this.renderShow(s, i);
