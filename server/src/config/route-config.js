@@ -13,15 +13,17 @@ module.exports = {
     );
 
     // Serve any static files
-    // Handle React routing, return all requests to React app
-    app.use(
-      express.static(path.join(__dirname, '..', '..', '..', 'client/build'))
+    const staticFiles = express.static(
+      path.join(__dirname, '..', '..', '..', 'client/build')
     );
-    app.get('*', function(req, res) {
-      res.send(
-        path.join(__dirname, '..', '..', '..', 'client/build', 'index.html')
-      );
-    });
+
+    // Handle React routing, return all requests to React app
+    app.use(staticFiles);
+    // app.get('*', function(req, res) {
+    //   res.send(
+    //     path.join(__dirname, '..', '..', '..', 'client/build', 'index.html')
+    //   );
+    // });
 
     app.use(staticRoutes);
   }

@@ -3,6 +3,7 @@ const fetch = require('node-fetch');
 const router = express.Router();
 const getPopularTVShows = require('./utils').getPopularTVShows;
 const mixedMediaSearch = require('./utils').mixedMediaSearch;
+const getPopularMovies = require('./utils').getPopularMovies;
 
 let title;
 
