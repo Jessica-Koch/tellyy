@@ -19,6 +19,10 @@ class Content extends Component {
         <Switch>
           <Route exact={true} path="/" component={Home} />
           <Route path="/error" component={ErrorMessage} />
+          <Route
+            path="/shows/:id"
+            render={props => <Show {...this.state} {...props} />}
+          />
         </Switch>
       </div>
     );

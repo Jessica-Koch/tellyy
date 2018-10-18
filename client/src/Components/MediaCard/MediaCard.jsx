@@ -44,10 +44,6 @@ class MediaCard extends Component {
             <div className={styles.title}>{title || name}</div>
           </div>
         </Link>
-        {/* <Route
-          path="/shows/:id"
-          render={(name, props) => <Show {...props} name={name} />}
-        /> */}
       </div>
     );
   }

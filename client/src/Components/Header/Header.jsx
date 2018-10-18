@@ -6,7 +6,7 @@ import Drawer from '../Drawer';
 import Spinner from '../Spinner';
 import Show from '../Show';
 import Icon from '../Icon';
-import {chevronsUp} from 'react-icons-kit/feather/chevronsUp';
+import {iosArrowUp} from 'react-icons-kit/ionicons/iosArrowUp';
 import MediaCard from '../MediaCard';
 import {Switch, Route} from 'react-router-dom';
 
@@ -78,7 +78,7 @@ class Header extends Component {
 
   render() {
     const {isOpen, isLoading, searchValue, searchResults} = this.state;
-    console.log(searchResults.length);
+
     return isLoading ? (
       <Spinner />
     ) : (
@@ -98,7 +98,7 @@ class Header extends Component {
         </div>
         <Drawer className={styles.drawer} isExpanded={isOpen}>
           <div className={styles.centered}>
-            <Icon onClick={!this.state.isOpen} icon={chevronsUp} />
+            <Icon onClick={!this.state.isOpen} size={20} icon={iosArrowUp} />
           </div>
           <div className={styles.resultsHeader}>
             {searchResults.length > 0
@@ -106,10 +106,10 @@ class Header extends Component {
               : this.renderNotFound}
           </div>
           {this.renderSearchResults()}
-          <Route
+          {/* <Route
             path="/shows/:id"
             render={props => <Show {...this.state} {...props} />}
-          />
+          /> */}
         </Drawer>
       </div>
     );
