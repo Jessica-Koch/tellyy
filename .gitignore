@@ -28,4 +28,4 @@ yarn.lock
 .vscode/
 /server/.env
 .env
-.history/
+.history/.history/
