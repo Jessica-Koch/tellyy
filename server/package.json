@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel ./ --ignore node_modules,spec,build --out-dir build",
     "start:dev": "nodemon ./bin/www",
-    "start": "node build/src/server.js",
+    "start": "node ./bin/www",
     "test": "export NODE_ENV=test && jasmine"
   },
   "repository": {},
